@@ -27,6 +27,8 @@ output = '\n'.join([  # Typically you prepare your output as a string
     "Query: {}".format(beautify(req["query"])),
     "Body: {}".format(beautify(req["body"])),
     "Env: {}".format(beautify(req["env"])),
+    "CWD: {}".format(os.getcwd()),
+    "Python: {}".format(sys.version),
     ])
 ctx.done(body=output)  # This will generate a successful HTTP 200 response
 
