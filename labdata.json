@@ -1,0 +1,199 @@
+{
+  "labs": [
+    {
+      "name": "msidlab1",
+      "tenantId": "2bb48554-699d-4f54-b926-3680554e2494",
+      "azureSubscription": "MSID_LABS_PPE",
+      "federated": false,
+      "federationProvider": "none",
+      "services": {
+        "deviceRegistration": {
+          "enabled": true,
+          "deploymentLocations": [
+            "cloud",
+            "on-premise"
+          ]
+        },
+        "selfServicePasswordReset": {
+          "enabled": true,
+          "authMethods": [
+            "QA",
+            "SMS"
+          ]
+        },
+        "passwordWriteBack": {
+          "enabled": false
+        },
+        "passwordHashSync": {
+          "enabled": false
+        },
+        "passThroughAuthentication": {
+          "enabled": false
+        },
+        "certificateBasedAuthentication": {
+          "enabled": false
+        },
+        "multiFactorAuthentication": {
+          "enabled": true,
+          "sku": "Office365",
+          "deploymentLocations": [
+            "cloud"
+          ]
+        }
+      },
+      "groups": [
+        {
+          "name": "IntuneDeviceUsers",
+          "objectType": "group",
+          "objectId": "",
+          "description": "Group used to target Intune device policy"
+        },
+        {
+          "name": "IntuneMAMUsers",
+          "objectType": "group",
+          "objectId": "",
+          "description": "Group used to Intune MAM policy"
+        }
+      ],
+      "userSettings": {
+        "usersMayGrantConsent": true,
+        "usersMayAddGalleryApps": true,
+        "usersMayRegisterApps": true,
+        "guestUsersLimited": true,
+        "usersInGuestInviterRoleCanInvite": true,
+        "membersCanInvite": true,
+        "guestsCanInvite": false
+      },
+      "users": []
+    },
+    {
+      "name": "msidlab5",
+      "tenantId": "d34a1bb7-3481-4d5f-8b94-f3cc27bf8eac",
+      "azureSubscription": "MSID_LABS_PPE",
+      "federated": true,
+      "federationProvider": "ADFSv3",
+      "services": {
+        "deviceRegistration": {
+          "enabled": true,
+          "deploymentLocations": [
+            "cloud"
+          ]
+        },
+        "selfServicePasswordReset": {
+          "enabled": false,
+          "authMethods": []
+        },
+        "passwordWriteBack": {
+          "enabled": false
+        },
+        "passwordHashSync": {
+          "enabled": false
+        },
+        "passThroughAuthentication": {
+          "enabled": false
+        },
+        "certificateBasedAuthentication": {
+          "enabled": true
+        },
+        "multiFactorAuthentication": {
+          "enabled": true,
+          "sku": "Azure",
+          "deploymentLocations": [
+            "cloud"
+          ]
+        }
+      },
+      "groups": [
+        {
+          "name": "IntuneDeviceUsers",
+          "objectType": "group",
+          "objectId": "",
+          "description": "Group used to target Intune device policy"
+        },
+        {
+          "name": "IntuneMAMUsers",
+          "objectType": "group",
+          "objectId": "",
+          "description": "Group used to Intune MAM policy"
+        }
+      ],
+      "userSettings": {
+        "usersMayGrantConsent": true,
+        "usersMayAddGalleryApps": true,
+        "usersMayRegisterApps": true,
+        "guestUsersLimited": true,
+        "usersInGuestInviterRoleCanInvite": true,
+        "membersCanInvite": true,
+        "guestsCanInvite": false
+      },
+      "domains": [
+        {
+          "name": "msidlab5.onmicrosoft.com",
+          "federated": false
+        },
+        {
+          "name": "msidlab5.com",
+          "federated": true
+        }
+      ],
+      "users": [
+        {
+          "admin": false,
+          "mam": false,
+          "mfa": true,
+          "office": true,
+          "aadPremium": true,
+          "upn": "fedMFA1@msidlab5.com",
+          "credentialVaultKeyName": "https://adaltestinfo.vault.azure.net/secrets/MSIDLAB5-fedMFA1/9240db594bac4d259504ffce5daa541a",
+          "objectId": "503a364a-707e-465f-a9da-6759c7f6203a",
+          "provisioned": true,
+          "federated": true,
+          "external": false,
+          "userType": "Member"
+        },
+        {
+          "admin": false,
+          "mam": false,
+          "mfa": false,
+          "office": true,
+          "aadPremium": true,
+          "upn": "fedNonMFA1@msidlab5.com",
+          "credentialVaultKeyName": "https://adaltestinfo.vault.azure.net/secrets/MSIDLAB5-fedNonMFA1/6d1b112d8680407ea71add4f9ecd66a0",
+          "objectId": "2ac70e74-1d0e-461c-9df6-80d02451ba9c",
+          "provisioned": true,
+          "federated": true,
+          "external": false,
+          "userType": "Member"
+        },
+        {
+          "admin": false,
+          "mam": false,
+          "mfa": true,
+          "office": true,
+          "aadPremium": true,
+          "upn": "manMFA1@msidlab5.onmicrosoft.com.com",
+          "credentialVaultKeyName": "https://adaltestinfo.vault.azure.net/secrets/MSDILAB5-manMFA1/a4bdc1f6e5bc43e698b8c20783439437",
+          "objectId": "e05f3265-bb34-4cce-a210-b3e06654724e",
+          "provisioned": true,
+          "federated": false,
+          "external": false,
+          "userType": "Member"
+        },
+        {
+          "admin": false,
+          "mam": false,
+          "mfa": false,
+          "office": true,
+          "aadPremium": true,
+          "upn": "manNonMFA1@msidlab5.onmicrosoft.com.com",
+          "credentialVaultKeyName": "https://adaltestinfo.vault.azure.net/secrets/MSDILAB5-manMFA1/a4bdc1f6e5bc43e698b8c20783439437",
+          "objectId": "a9590750-7562-45f5-af5b-41f504843766",
+          "provisioned": true,
+          "federated": false,
+          "external": false,
+          "userType": "Member"
+        }
+      ]
+    }
+  ]
+}
