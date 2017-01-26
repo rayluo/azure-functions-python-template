@@ -23,10 +23,13 @@ from azurefunctions import is_subdict_of
 def beautify(a_dict):  # Your own helper function(s), if needed
     return json.dumps(a_dict, indent=2)
 
+def normalize(value):  # String to boolean
+    return {"true": True, "True": True, "false": False, "False": False}.get(value, value)
+
 def change_keys_to_lower_case(dictionary):
     return {k.lower(): v for k, v in dictionary.items()}
 
-query = ctx.req["query"]  # Its keys are all lower case
+query = {k: normalize(v) for k, v in ctx.req["query"].items()}  # k in lower case
 lab_data = json.load(open(os.path.join(func_path, "..", "labdata.json")))
 users_from_chosen_labs = list(itertools.chain.from_iterable(
     lab["users"] for lab in lab_data["labs"]
