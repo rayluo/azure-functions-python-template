@@ -60,7 +60,7 @@ class Context(object):
             elif k[:10] == "REQ_QUERY_":
                 self.req["query"][k[10:].lower()] = os.environ[k]
             else:
-                self.req["env"][k.lower()] = os.environ[k]
+                self.req["env"][k] = os.environ[k]  # k is in upper case
 
     def log(self, message):
         # In Azure Functions, the output on stdout will be logged
