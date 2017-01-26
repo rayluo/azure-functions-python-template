@@ -23,12 +23,16 @@ from azurefunctions import is_subdict_of
 def beautify(a_dict):  # Your own helper function(s), if needed
     return json.dumps(a_dict, indent=2)
 
-query = ctx.req["query"]
-lab_data = json.load(open(os.path.join("..", "labdata.json")))
+def change_keys_to_lower_case(dictionary):
+    return {k.lower(): v for k, v in dictionary.items()}
+
+query = ctx.req["query"]  # Its keys are all lower case
+lab_data = json.load(open(os.path.join(func_path, "..", "labdata.json")))
 users_from_chosen_labs = list(itertools.chain.from_iterable(
     lab["users"] for lab in lab_data["labs"]
-    if lab["federationProvider"] == query.get("federationProvider", "none")))
-query.pop("federationProvider", None)
-users = [user for user in users_from_chosen_labs if is_subdict_of(query, user)]
+    if lab["federationProvider"] == query.get("federationprovider", "none")))
+query.pop("federationprovider", None)
+users = [user for user in users_from_chosen_labs
+    if is_subdict_of(query, change_keys_to_lower_case(user))]
 ctx.done(body=beautify(users), headers={"Content-Type": "text/json"})
 
