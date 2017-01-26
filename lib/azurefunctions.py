@@ -74,6 +74,7 @@ class Context(object):
 		"text/html" if body.startswith('<') else 'text/plain')
         if not response:
             response = {"status": status, "headers": headers or {}, "body": body}
+        response['isRaw'] = True  # https://github.com/Azure/azure-webjobs-sdk-script/issues/965
         http_output_binding = find_first_matching(
             self.bindings.values(), {"direction": "out", "type": "http"})
         assert http_output_binding, "Need at least one http output binding"
